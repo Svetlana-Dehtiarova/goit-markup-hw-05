@@ -25,13 +25,12 @@ background: #2F303A;*/
   --border-color: #eeeeee;
   --header-border-color: #ececec;
   --social-text: #afb1b8;
+  --img-background-color: rgba(47, 48, 58, 0.8)
+  --cubic: cubic-bezier(0.42, 0, 0.58, 1);
+  --portfolio-card-color: rgba(33, 150, 243, 0.9);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 /*-----------*/
 body {
   color: var(--primary-text-color);
@@ -79,24 +78,13 @@ img {
   border-bottom: 1px solid var(--header-border-color);
 }
 .contacts-icon {
-  padding: 0px;
   margin-right: 10px;
-  border: 0px;
-  /*background-color: var(--second-background-color);*/
   fill: var(--primary-text-color);
-  content: '';
-  height: 12px;
-  width: 16px;
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
+
 .contacts-icon:hover,
 .contacts-icon:focus {
-  fill: var(--accent-color);
+  fill: currentColor;
 }
 .item-two {
   padding-top: 32px;
@@ -107,8 +95,7 @@ img {
 }
 
 /*кольори лого*/
-.logo,
-.logo-accent {
+.logo {
   color: var(--main-dark-color);
   font-family: Raleway, sans-serif;
   font-weight: 700;
@@ -117,10 +104,6 @@ img {
   text-decoration: none;
 }
 .logo-accent {
-  color: var(--accent-color);
-}
-.logo:hover,
-.logo:focus {
   color: var(--accent-color);
 }
 /*Навігація по сайту*/
@@ -163,13 +146,14 @@ img {
   font-weight: 500;
   line-height: 1.14;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 .contacts.list .phone:focus,
 .contacts.list .phone:hover,
 .contacts.list .e-mail:focus,
 .contacts.list .e-mail:hover {
   color: var(--accent-color);
-  cursor: pointer;
 }
 
 .contacts.list {
@@ -218,11 +202,35 @@ img {
 }
 .img-box {
   display: flex;
+  justify-content: center;
 }
 .img-box .image-first + .image-first {
   margin-left: 30px;
 }
 
+.image-first {
+  position: relative;
+}
+
+.img-label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  color: var(--main-lite-color);
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0px;
+  background-color: var(--img-background-color);
+  position: absolute;
+  bottom: 0px;
+  right: 50%;
+  transform: translate(50%); 
+}
 .section-subtitle.first {
   font-size: 14px;
   line-height: 1.14;
@@ -352,7 +360,6 @@ img {
 
 .customer-icon {
   --color1: currentColor;
-  height: 50px;
 }
 /*Сторінка Портфоліо*/
 .info-title {
@@ -375,6 +382,9 @@ img {
   margin-right: 30px;
   margin-bottom: 30px;
 }
+block:hover {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+}
 
 .block:nth-child(3n) {
   margin-right: 0px;
@@ -382,6 +392,7 @@ img {
 .block:nth-last-child(-n + 3) {
   margin-bottom: 0px;
 }
+
 .info-block {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -402,7 +413,48 @@ img {
   clip-path: inset(50%);
   margin: -1px;
 }
+.block-link {
+  display: block;
+  transition: box-shadow 250ms var(--cubic);
+  text-decoration: none;
+}
+.block-link:hover {
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    0px 1px 1px rgba(0, 0, 0, 0.12);
+}
+.set {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--portfolio-card-color);
+  transform: translateY(100%);
+  opacity: 1;
+  transition: transform 250ms var(--cubic), opacity 250ms var(--cubic),
+    box-shadow 250ms var(--cubic);
+}
 
+.block-link:hover .set,
+.block-link:focus .set {
+  transform: translateY(0);
+  opacity: 1;
+}
+.set-description {
+  color: var(--main-lite-color);
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.56;
+  margin: 0px;
+}
+.card-set {
+  position: relative;
+  overflow: hidden;
+}
+.info-set {
+  padding: 20px 24px;
+  border: 1px solid var(--border-color);
+}
 /*Кнопка*/
 .button {
   color: var(--title-text-color);
@@ -420,6 +472,7 @@ img {
 .button:focus {
   color: var(--main-lite-color);
   background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .primary-button {
   display: inline-block;
