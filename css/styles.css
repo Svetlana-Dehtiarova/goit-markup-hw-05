@@ -25,11 +25,10 @@ background: #2F303A;*/
   --border-color: #eeeeee;
   --header-border-color: #ececec;
   --social-text: #afb1b8;
-  --img-background-color: rgba(47, 48, 58, 0.8)
+  --img-background-color: rgba(47, 48, 58, 0.8);
   --cubic: cubic-bezier(0.42, 0, 0.58, 1);
   --portfolio-card-color: rgba(33, 150, 243, 0.9);
 }
-
 
 /*-----------*/
 body {
@@ -61,7 +60,10 @@ button {
 img {
   display: block;
 }
-
+a {
+  text-decoration: none;
+  color: currentColor;
+}
 .section {
   padding: 94px 0px;
 }
@@ -79,13 +81,9 @@ img {
 }
 .contacts-icon {
   margin-right: 10px;
-  fill: var(--primary-text-color);
-}
-
-.contacts-icon:hover,
-.contacts-icon:focus {
   fill: currentColor;
 }
+
 .item-two {
   padding-top: 32px;
   padding-bottom: 32px;
@@ -101,7 +99,6 @@ img {
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
-  text-decoration: none;
 }
 .logo-accent {
   color: var(--accent-color);
@@ -116,12 +113,15 @@ img {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
-  text-decoration: none;
-
   color: var(--title-text-color);
   letter-spacing: 0.02em;
   font-weight: 500;
   line-height: 1.14;
+  position: relative;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  position: relative;
 }
 .site-nav {
   display: flex;
@@ -139,13 +139,31 @@ img {
 .site-nav .link.current {
   color: var(--accent-color);
 }
+/*----Підкреслення---*/
+.link::after {
+  content: ' ';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  opacity: 0;
+}
+.link::after {
+  opacity: 0;
+}
+.link.current::after {
+  opacity: 1;
+}
+/*-----Контакти------*/
 .contacts.list .phone,
 .contacts.list .e-mail {
   color: var(--primary-text-color);
   letter-spacing: 0.02em;
   font-weight: 500;
   line-height: 1.14;
-  text-decoration: none;
   display: flex;
   align-items: center;
 }
@@ -186,6 +204,7 @@ img {
   line-height: 1.36;
   text-transform: uppercase;
 }
+/*-----Модальне вікно-----*/
 /* Секції*/
 /*Головна сторінка*/
 
@@ -224,12 +243,11 @@ img {
   line-height: 1.14;
   text-align: center;
   text-transform: uppercase;
-  margin: 0px;
   background-color: var(--img-background-color);
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   right: 50%;
-  transform: translate(50%); 
+  transform: translate(50%);
 }
 .section-subtitle.first {
   font-size: 14px;
@@ -383,7 +401,8 @@ img {
   margin-bottom: 30px;
 }
 block:hover {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 .block:nth-child(3n) {
@@ -416,7 +435,6 @@ block:hover {
 .block-link {
   display: block;
   transition: box-shadow 250ms var(--cubic);
-  text-decoration: none;
 }
 .block-link:hover {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
@@ -429,28 +447,25 @@ block:hover {
   width: 100%;
   height: 100%;
   background-color: var(--portfolio-card-color);
-  transform: translateY(100%);
-  opacity: 1;
-  transition: transform 250ms var(--cubic), opacity 250ms var(--cubic),
-    box-shadow 250ms var(--cubic);
+  transform: translateY(101%);
+  transition: transform 250ms var(--cubic);
+}
+.card-set {
+  position: relative;
+  overflow: hidden;
 }
 
 .block-link:hover .set,
 .block-link:focus .set {
   transform: translateY(0);
-  opacity: 1;
 }
 .set-description {
   color: var(--main-lite-color);
   padding: 63px 24px;
   font-size: 18px;
   line-height: 1.56;
-  margin: 0px;
 }
-.card-set {
-  position: relative;
-  overflow: hidden;
-}
+
 .info-set {
   padding: 20px 24px;
   border: 1px solid var(--border-color);
@@ -472,7 +487,8 @@ block:hover {
 .button:focus {
   color: var(--main-lite-color);
   background-color: var(--accent-color);
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .primary-button {
   display: inline-block;
@@ -535,7 +551,6 @@ block:hover {
   font-weight: 700;
   font-size: 26px;
   line-height: 1.19;
-  text-decoration: none;
 }
 .contacts-item {
   margin-bottom: 9px;
@@ -547,14 +562,12 @@ block:hover {
   line-height: 1.71;
   font-style: normal;
   color: var(--main-lite-color);
-  text-decoration: none;
 }
 .phone.second,
 .e-mail.second {
   line-height: 1.71;
   font-style: normal;
   color: var(--footer-phone-color);
-  text-decoration: none;
 }
 .location.second:hover,
 .location.second:focus,
