@@ -12,7 +12,3 @@
     refs.modal.classList.toggle("is-hidden");
   }
 })();
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
